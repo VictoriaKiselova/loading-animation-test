@@ -1,0 +1,52 @@
+@use "../../styles/_variables" as *;
+
+.loaderContainer {
+  width: max-content;
+  list-style-type: none;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.loaderItem {
+  width: 12px;
+  border-radius: 32px;
+  background: $loader-gradient;
+  opacity: 0;
+  transform: scaleX(0.4);
+  transform-origin: top;
+  animation: seq 5s linear infinite;
+}
+
+@for $i from 1 through 9 {
+  .loaderItem:nth-child(#{$i}) {
+    animation-delay: #{0.15 * ($i - 1)}s;
+  }
+}
+
+@keyframes seq {
+  0% {
+    opacity: 0;
+    transform: scaleX(0.4);
+  }
+
+  20% {
+    opacity: 1;
+    transform: scaleX(1);
+  }
+
+  45% {
+    opacity: 1;
+    transform: scaleX(1);
+  }
+
+  70% {
+    opacity: 0;
+    transform: scaleX(0.4);
+  }
+
+  100% {
+    opacity: 0;
+    transform: scaleX(0.4);
+  }
+}
